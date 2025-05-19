@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#007bff" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => (document.getElementById('nav-placeholder').innerHTML = html));
+  </script>
+  <main>
+    <form id="select-form">
+      <label for="saved-cities">Wybierz miasto:</label>
+      <select id="saved-cities"></select>
+      <button type="button" id="get-forecast">
+        <i class="fa fa-calendar"></i> Pobierz prognozę
+      </button>
+    </form>
+    <div id="forecast-container" class="forecast-container hidden"></div>
+    <template id="forecast-card-template">
+      <div class="weather-card">
+        <h2 class="fc-date"></h2>
+        <div class="weather-main">
+          <div class="weather-icon-wrapper">
+            <img class="weather-icon" alt="" />
+          </div>
+          <div class="weather-info-col">
+            <p class="label">Temp. dzienna</p>
+            <p class="value"><span class="fc-temp"></span>°C</p>
+          </div>
+          <div class="weather-info-col">
+            <p class="label">Warunki</p>
+            <p class="value fc-desc"></p>
+          </div>
+        </div>
+        <div class="weather-extra">
+          <p>
+            <i class="fa fa-tint"></i> Wilgotność:
+            <span class="fc-humidity"></span>%
+          </p>
+          <p>
+            <i class="fa fa-tachometer-alt"></i> Ciśnienie:
+            <span class="fc-pressure"></span> hPa
+          </p>
+          <p>
+            <i class="fa fa-wind"></i> Wiatr:
+            <span class="fc-wind-speed"></span> m/s
+          </p>
+          <p>
+            <i class="fa fa-cloud"></i> Zachmurzenie:
+            <span class="fc-clouds"></span>%
+          </p>
+        </div>
+      </div>
+    </template>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

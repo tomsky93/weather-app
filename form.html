@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather App - Dodaj miasto</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+      });
+  </script>
+  <main>
+    <form id="city-form">
+      <label for="city-name">Nazwa miasta:</label>
+      <input type="text" id="city-name" required>
+      <button type="submit">Zapisz</button>
+    </form>
+    <p id="form-status"></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

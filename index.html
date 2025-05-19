@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+      });
+  </script>
+  <main>
+    <form id="select-form">
+      <label for="saved-cities">Wybierz miasto:</label>
+      <select id="saved-cities"></select>
+      <button type="button" id="get-weather">
+        <i class="fa fa-sync-alt"></i> Pobierz pogodę
+      </button>
+    </form>
+    <div id="weather-info" class="weather-card hidden">
+      <h2>Pogoda w <span id="city-display">–</span></h2>
+      <div class="weather-main">
+        <div class="weather-icon-wrapper">
+          <img id="w-icon" class="weather-icon" alt="Ikona pogody">
+        </div>
+        <div class="weather-info-col">
+          <p class="label">Temperatura</p>
+          <p class="value"><span id="w-temp">--</span>°C</p>
+        </div>
+        <div class="weather-info-col">
+          <p class="label">Warunki</p>
+          <p class="value" id="w-desc">–</p>
+        </div>
+      </div>
+      <div class="weather-extra">
+        <p><i class="fa fa-tint"></i> Wilgotność: <span id="w-humidity">--</span>%</p>
+        <p><i class="fa fa-tachometer-alt"></i> Ciśnienie: <span id="w-pressure">--</span> hPa</p>
+        <p><i class="fa fa-wind"></i> Wiatr: <span id="w-wind-speed">--</span> m/s, <span id="w-wind-dir">--</span>°</p>
+        <p><i class="fa fa-cloud"></i> Zachmurzenie: <span id="w-clouds">--</span>%</p>
+        <p><i class="fa fa-eye"></i> Widoczność: <span id="w-vis">--</span> km</p>
+      </div>
+      <p class="weather-time">Aktualizacja: <span id="w-time">–</span></p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
