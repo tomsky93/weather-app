@@ -1,0 +1,5 @@
+[build]
+  command = """
+    sed -i "s|const OPENWEATHER_KEY = ''|const OPENWEATHER_KEY = '$OPENWEATHER_KEY'|g" index.html *.js
+  """
+  publish = "."
